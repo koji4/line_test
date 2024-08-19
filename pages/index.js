@@ -1,25 +1,32 @@
-import Head from 'next/head';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const lineLoginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${process.env.LINE_CLIENT_ID}&redirect_uri=${process.env.LINE_REDIRECT_URI}&state=random_state&scope=profile`;
+  const [text, setText] = useState('');
+  const [submittedText, setSubmittedText] = useState('');
+
+  useEffect(() => {
+    console.log('LINE_CLIENT_ID:', process.env.LINE_CLIENT_ID);
+  }, []);
+
+  const handleSubmit = () => {
+    setSubmittedText(text);
+  };
 
   return (
-    <div>
-      <Head>
-        <title>LINE Login Example</title>
-        <meta name="description" content="LINE Login Example with Next.js" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <h1>Hello</h1>
-        <input type="text" id="textInput" placeholder="Enter text" />
-        <button onClick={() => {
-          const input = document.getElementById('textInput').value;
-          document.getElementById('displayText').innerText = input;
-        }}>Submit</button>
-        <p id="displayText" style={{ color: 'red' }}></p>
-        <a href={lineLoginUrl}>Login with LINE</a>
-      </main>
+    <div style={{ padding: '20px' }}>
+      <h1>Hello２</h1>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Enter text"
+      />
+      <button onClick={handleSubmit}>Submit</button>
+      {submittedText && (
+        <p style={{ color: 'red' }}>{submittedText}</p>
+      )}
+      <br />
+      <p>LINE_CLIENT_IDdddd: {process.env.LINE_CLIENT_ID}</p>
     </div>
   );
 }
