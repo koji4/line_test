@@ -19,12 +19,12 @@ export default function Home() {
     }
 
     const amount = courseOptions[selectedCourse];
-    setMessage(`予約しました！\n担当者: ${selectedStaff}\nコース: ${selectedCourse}\n金額: ${amount}円`);
+    setMessage(`予約しました！\nお待ちしております\n担当者: ${selectedStaff}\nコース: ${selectedCourse}\n金額: ${amount}円`);
   };
 
   return (
     <div style={{ padding: '20px' }}>
-      <h1>予約フォーム</h1>
+      <h1>バーバー細川 INE予約</h1>
       <div>
         <label>予約時間:
           <input
