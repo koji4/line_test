@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/CustomerData.module.css';
+//neko
 
 const CustomerData = ({ customers, onCardClick }) => {
     return (
